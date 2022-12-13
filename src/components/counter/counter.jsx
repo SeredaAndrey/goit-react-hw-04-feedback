@@ -16,45 +16,30 @@ class Counter extends React.Component {
     good: this.props.initialValueGood,
     neutral: this.props.initialValueNeutral,
     bad: this.props.initialValueBad,
-    total: this.props.initialValueTotal,
-    positivePercentage: this.props.initialValuePositivePercentage,
-    message: this.props.notificationMessage,
   };
 
   handleIncrementGood = () => {
     this.setState(prevState => ({
       good: prevState.good + 1,
     }));
-    this.countTotalFeedback();
-    this.countPositiveFeedbackPercentage();
+    // this.countTotalFeedback();
+    // this.countPositiveFeedbackPercentage();
   };
 
   handleIncrementNeutral = () => {
     this.setState(prevState => ({
       neutral: prevState.neutral + 1,
     }));
-    this.countTotalFeedback();
-    this.countPositiveFeedbackPercentage();
+    // this.countTotalFeedback();
+    // this.countPositiveFeedbackPercentage();
   };
 
   handleIncrementNegative = () => {
     this.setState(prevState => ({
       bad: prevState.bad + 1,
     }));
-    this.countTotalFeedback();
-    this.countPositiveFeedbackPercentage();
-  };
-
-  countTotalFeedback() {
-    this.setState(prevState => ({
-      total: prevState.total + 1,
-    }));
-  }
-
-  countPositiveFeedbackPercentage = () => {
-    this.setState(prevState => ({
-      positivePercentage: Math.round((prevState.good / prevState.total) * 100),
-    }));
+    // this.countTotalFeedback();
+    // this.countPositiveFeedbackPercentage();
   };
 
   render() {
@@ -69,9 +54,6 @@ class Counter extends React.Component {
           goodValue={this.state.good}
           neutralValue={this.state.neutral}
           badValue={this.state.bad}
-          totalValue={this.state.total}
-          positivePercentageValue={this.state.positivePercentage}
-          message={this.state.message}
         />
       </div>
     );
