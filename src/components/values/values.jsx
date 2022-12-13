@@ -15,6 +15,12 @@ class Values extends React.Component {
     positivePercentage: this.props.initialValuePositivePercentage,
   };
 
+  componentDidUpdate = e => {
+    console.log(e);
+    // this.countTotalFeedback();
+    // this.countPositiveFeedbackPercentage();
+  };
+
   countTotalFeedback = () => {
     this.setState(prevState => ({
       total: prevState.total + 1,
@@ -33,7 +39,7 @@ class Values extends React.Component {
     return (
       <StatisticContainer>
         <SeccondaryTitle>Statistics</SeccondaryTitle>
-        {this.state.total !== 0 ? (
+        {this.state.total === 0 ? (
           <NotificationMessage message={this.props.notificationMessage} />
         ) : (
           <ValueList
@@ -48,31 +54,5 @@ class Values extends React.Component {
     );
   }
 }
-
-// const Values = ({
-//   goodValue,
-//   neutralValue,
-//   badValue,
-//   totalValue,
-//   positivePercentageValue,
-//   message,
-// }) => {
-//   return (
-//     <StatisticContainer>
-//       <SeccondaryTitle>Statistics</SeccondaryTitle>
-//       {totalValue === 0 ? (
-//         <NotificationMessage message={message} />
-//       ) : (
-//         <ValueList
-//           goodValue={goodValue}
-//           neutralValue={neutralValue}
-//           badValue={badValue}
-//           totalValue={totalValue}
-//           positivePercentageValue={positivePercentageValue}
-//         />
-//       )}
-//     </StatisticContainer>
-//   );
-// };
 
 export default Values;
