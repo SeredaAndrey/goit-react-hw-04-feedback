@@ -22,24 +22,18 @@ class Counter extends React.Component {
     this.setState(prevState => ({
       good: prevState.good + 1,
     }));
-    // this.countTotalFeedback();
-    // this.countPositiveFeedbackPercentage();
   };
 
   handleIncrementNeutral = () => {
     this.setState(prevState => ({
       neutral: prevState.neutral + 1,
     }));
-    // this.countTotalFeedback();
-    // this.countPositiveFeedbackPercentage();
   };
 
   handleIncrementNegative = () => {
     this.setState(prevState => ({
       bad: prevState.bad + 1,
     }));
-    // this.countTotalFeedback();
-    // this.countPositiveFeedbackPercentage();
   };
 
   render() {
