@@ -2,4 +2,4 @@
 values.jsx, controls.jsx, notification.jsx ). якщо компонент або функція отримує
 props, propTypes повинні бути описані.
 
-Виконання:
+Виконання: додав propTypes
