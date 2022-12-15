@@ -1,4 +1,7 @@
 import React from 'react';
+
+import PropTypes from 'prop-types';
+
 import {
   ControlsContainer,
   PrimaryTitle,
@@ -29,3 +32,9 @@ const Controls = ({ onIncrementGood, onIncrementNeutral, onIncrementBad }) => {
 };
 
 export default Controls;
+
+Controls.prototype = {
+  onIncrementGood: PropTypes.number.isRequired,
+  onIncrementNeutral: PropTypes.number.isRequired,
+  onIncrementBad: PropTypes.number.isRequired,
+};

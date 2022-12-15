@@ -7,9 +7,6 @@ class Counter extends React.Component {
     initialValueGood: 0,
     initialValueNeutral: 0,
     initialValueBad: 0,
-    initialValueTotal: 0,
-    initialValuePositivePercentage: 0,
-    notificationMessage: 'There is no feedback',
   };
 
   state = {

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { List, Item, Value } from './valuelist.styled';
 
 const ValueList = ({
@@ -30,3 +32,11 @@ const ValueList = ({
 };
 
 export default ValueList;
+
+ValueList.propTypes = {
+  goodValue: PropTypes.number.isRequired,
+  neutralValue: PropTypes.number.isRequired,
+  badValue: PropTypes.number.isRequired,
+  totalValue: PropTypes.number.isRequired,
+  positivePercentageValue: PropTypes.number.isRequired,
+};

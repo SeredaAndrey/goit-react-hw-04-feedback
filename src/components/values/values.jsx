@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import NotificationMessage from 'components/notification/notification';
 import ValueList from 'components/valuelist/valuelist';
 import { StatisticContainer, SeccondaryTitle } from './values.styled';
@@ -25,3 +27,9 @@ const Values = ({ goodValue, neutralValue, badValue }) => {
 };
 
 export default Values;
+
+Values.propTypes = {
+  goodValue: PropTypes.number.isRequired,
+  neutralValue: PropTypes.number.isRequired,
+  badValue: PropTypes.number.isRequired,
+};
