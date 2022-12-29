@@ -55,7 +55,7 @@ export const ControlsButton = styled.button`
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   background-color: ${p => {
-    switch (p.color) {
+    switch (p.name) {
       case 'good':
         return p.theme.color.colorGood;
       case 'neutral':
@@ -69,7 +69,7 @@ export const ControlsButton = styled.button`
   &:hover,
   &:focus {
     background-color: ${p => {
-      switch (p.color) {
+      switch (p.name) {
         case 'good':
           return p.theme.color.colorGoodHover;
         case 'neutral':

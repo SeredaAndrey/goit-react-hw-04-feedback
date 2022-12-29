@@ -9,33 +9,45 @@ const getLocalStorage = () => {
 };
 
 export default function Counter() {
-  const [good, setGood] = useState(getLocalStorage().good);
-  const [neutral, setNeutral] = useState(getLocalStorage().neutral);
-  const [bad, setBad] = useState(getLocalStorage().bad);
+  const [good, setGood] = useState(() => {
+    return getLocalStorage() ? getLocalStorage().good : 0;
+  });
+  const [neutral, setNeutral] = useState(() => {
+    return getLocalStorage() ? getLocalStorage().neutral : 0;
+  });
+  const [bad, setBad] = useState(() => {
+    return getLocalStorage() ? getLocalStorage().bad : 0;
+  });
 
   useEffect(() => {
-    const data = { good, bad, neutral };
-    localStorage.setItem(LS_KEY, JSON.stringify(data));
+    const state = { good, bad, neutral };
+    localStorage.setItem(LS_KEY, JSON.stringify(state));
   }, [good, bad, neutral]);
 
-  const handleIncrementGood = () => {
-    setGood(state => state + 1);
-  };
-  const handleIncrementNeutral = () => {
-    setNeutral(state => state + 1);
-  };
-  const handleIncrementNegative = () => {
-    setBad(state => state + 1);
+  const handleIncrement = state => {
+    switch (state) {
+      case 'good':
+        setGood(state => state + 1);
+        break;
+      case 'neutral':
+        setNeutral(state => state + 1);
+        break;
+      case 'bad':
+        setBad(state => state + 1);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
     <div className="counter">
-      <Controls
-        onIncrementGood={handleIncrementGood}
-        onIncrementNeutral={handleIncrementNeutral}
-        onIncrementBad={handleIncrementNegative}
+      <Controls onIncrement={handleIncrement} />
+      <Values
+        goodValue={good ?? 0}
+        neutralValue={neutral ?? 0}
+        badValue={bad ?? 0}
       />
-      <Values goodValue={good} neutralValue={neutral} badValue={bad} />
     </div>
   );
 }

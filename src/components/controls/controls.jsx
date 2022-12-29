@@ -8,22 +8,30 @@ import {
   ControlsButton,
 } from './controls.styled';
 
-const Controls = ({ onIncrementGood, onIncrementNeutral, onIncrementBad }) => {
+const Controls = ({ onIncrement }) => {
   return (
     <ControlsContainer>
       <PrimaryTitle>Please leave feedback</PrimaryTitle>
       <div>
-        <ControlsButton color="good" type="button" onClick={onIncrementGood}>
+        <ControlsButton
+          name="good"
+          type="button"
+          onClick={() => onIncrement('good')}
+        >
           Good
         </ControlsButton>
         <ControlsButton
-          color="neutral"
+          name="neutral"
           type="button"
-          onClick={onIncrementNeutral}
+          onClick={() => onIncrement('neutral')}
         >
           Neutral
         </ControlsButton>
-        <ControlsButton color="bad" type="button" onClick={onIncrementBad}>
+        <ControlsButton
+          name="bad"
+          type="button"
+          onClick={() => onIncrement('bad')}
+        >
           Bad
         </ControlsButton>
       </div>
