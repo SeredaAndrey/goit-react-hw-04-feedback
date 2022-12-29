@@ -1,37 +1,21 @@
 import Controls from 'components/controls/controls';
 import Values from 'components/values/values';
-import { useRef } from 'react';
 import { useEffect, useState } from 'react';
 
 const LS_KEY = 'localstorage_key_feedback';
 
+const getLocalStorage = () => {
+  return JSON.parse(localStorage.getItem(LS_KEY));
+};
+
 export default function Counter() {
-  const [good, setGood] = useState(0);
-  const [neutral, setNeutral] = useState(0);
-  const [bad, setBad] = useState(0);
-  const isFirstRender = useRef(true);
+  const [good, setGood] = useState(getLocalStorage().good);
+  const [neutral, setNeutral] = useState(getLocalStorage().neutral);
+  const [bad, setBad] = useState(getLocalStorage().bad);
 
   useEffect(() => {
-    switch (isFirstRender.current) {
-      case true: {
-        const data = JSON.parse(localStorage.getItem(LS_KEY));
-        if (data) {
-          setGood(data.good);
-          setBad(data.bad);
-          setNeutral(data.neutral);
-        }
-        isFirstRender.current = false;
-        break;
-      }
-      case false: {
-        const data = { good, bad, neutral };
-        localStorage.setItem(LS_KEY, JSON.stringify(data));
-        break;
-      }
-
-      default:
-        break;
-    }
+    const data = { good, bad, neutral };
+    localStorage.setItem(LS_KEY, JSON.stringify(data));
   }, [good, bad, neutral]);
 
   const handleIncrementGood = () => {
